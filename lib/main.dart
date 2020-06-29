@@ -25,6 +25,11 @@ class MyHomePage extends StatelessWidget {
         date: DateTime.now())
   ];
 
+  // String titleInput;
+  // String amountInput;
+  final titleInputController = TextEditingController();
+  final amountInputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,8 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expense Tracker'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -40,6 +46,35 @@ class MyHomePage extends StatelessWidget {
               color: Colors.cyan[300],
               child: Text('Chart'),
               elevation: 12,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    // onChanged: (value) => titleInput = value,
+                    controller: titleInputController,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    //onChanged: (value) => amountInput = value,
+                    controller: amountInputController,
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      // print(amountInput);
+                      print(amountInputController.text);
+                    },
+                    child: Text('Add Transaction'),
+                    textColor: Colors.purple,
+                  )
+                ],
+              ),
             ),
           ),
           Column(
