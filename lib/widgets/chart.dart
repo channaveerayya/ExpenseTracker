@@ -18,15 +18,11 @@ class Chart extends StatelessWidget {
           totalSum += recentTransactions[i].amount;
         }
       }
-      print({
-        'Day': DateFormat.E().format(weekDay).substring(0, 1),
-        'amount': totalSum,
-      });
       return {
         'Day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
